@@ -1,12 +1,12 @@
-const user = require('../db/models').Person;
-const contact = require('../db/models').Comment;
+const user = require('../db/models/person');
+const contact = require('../db/models/contacts');
 const ResponseFormat = require('../core').ResponseFormat;
 module.exports = {
     create(req, res) {
         return user
         .create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            firstName: req.body.name,
+            sirName: req.body.sirName,
             email: req.body.email
         })
         .then(user => res.status(201).json(ResponseFormat.build(
